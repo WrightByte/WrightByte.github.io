@@ -2,9 +2,7 @@
     --primary-color: #6c5ce7;
     --secondary-color: #a29bfe;
     --accent-color: #fd79a8;
-    --text-color: #2d3436;
-    --background-light-1: #e0f0ff;
-    --background-light-2: #fff0f5;
+    --text-color: #f4f4f4;
     --background-dark-1: #2c3e50;
     --background-dark-2: #34495e;
     --transition: all 0.3s ease;
@@ -20,7 +18,7 @@ body {
     font-family: 'Raleway', sans-serif;
     line-height: 1.6;
     color: var(--text-color);
-    background: linear-gradient(135deg, var(--background-light-1), var(--background-light-2));
+    background: linear-gradient(135deg, var(--background-dark-1), var(--background-dark-2));
     transition: background 10s ease;
     animation: gradientShift 20s ease infinite;
 }
@@ -44,7 +42,7 @@ body {
 }
 
 header {
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
     position: fixed;
     width: 100%;
@@ -86,17 +84,6 @@ nav {
     color: var(--primary-color);
 }
 
-.dark-mode-toggle {
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: var(--text-color);
-    transition: var(--transition);
-}
-
-.dark-mode-toggle:hover {
-    color: var(--primary-color);
-}
-
 .hamburger {
     display: none;
     cursor: pointer;
@@ -122,12 +109,15 @@ nav {
 
 .hero-content {
     padding: 2rem;
+    position: relative;
+    z-index: 1;
 }
 
 #hero h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
-    color: var(--text-color);
+    color: #000;
+    text-shadow: 2px 2px 4px rgba(255,255,255,0.5);
 }
 
 .tagline {
@@ -326,46 +316,9 @@ footer {
     background-color: var(--accent-color);
 }
 
-/* Dark mode styles */
-body.dark-mode {
-    --text-color: #f4f4f4;
-    background: linear-gradient(135deg, var(--background-dark-1), var(--background-dark-2));
-    animation: gradientShiftDark 20s ease infinite;
-}
-
-@keyframes gradientShiftDark {
-    0% {
-        background-position: 0% 50%;
-    }
-    50% {
-        background-position: 100% 50%;
-    }
-    100% {
-        background-position: 0% 50%;
-    }
-}
-
-body.dark-mode header {
-    background-color: rgba(26, 26, 26, 0.95);
-}
-
-body.dark-mode .skill-item, 
-body.dark-mode .project-item {
-    background-color: rgba(0, 0, 0, 0.2);
-}
-
-body.dark-mode #contact {
-    background-color: var(--background-dark-1);
-}
-
-body.dark-mode .hamburger .line {
-    background-color: #f4f4f4;
-}
-
 /* Accessibility improvements */
 .btn:focus,
 .nav-links a:focus,
-.dark-mode-toggle:focus,
 #back-to-top:focus {
     outline: 2px solid var(--accent-color);
     outline-offset: 2px;
@@ -383,11 +336,25 @@ body.dark-mode .hamburger .line {
     transform: translateY(0);
 }
 
+/* Subtle background design */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><circle cx="50" cy="50" r="40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="2"/></svg>');
+    background-size: 100px 100px;
+    pointer-events: none;
+    z-index: -1;
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
-        background-color: var(--background-light-1);
+        background-color: var(--background-dark-1);
         height: 100vh;
         width: 100%;
         flex-direction: column;

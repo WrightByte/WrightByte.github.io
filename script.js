@@ -8,19 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
         loop: true
     });
 
-    // Dark mode toggle
-    const darkModeToggle = document.querySelector('.dark-mode-toggle');
-    const body = document.body;
-
-    darkModeToggle.addEventListener('click', () => {
-        body.classList.toggle('dark-mode');
-        if (body.classList.contains('dark-mode')) {
-            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
-        } else {
-            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
-        }
-    });
-
     // Mobile menu toggle
     const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
@@ -96,8 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateGradient() {
         const hue = (Date.now() / 100) % 360;
         document.body.style.background = `linear-gradient(135deg, 
-            hsl(${hue}, 100%, 90%), 
-            hsl(${(hue + 60) % 360}, 100%, 90%)
+            hsl(${hue}, 30%, 25%), 
+            hsl(${(hue + 60) % 360}, 30%, 25%)
         )`;
     }
 
