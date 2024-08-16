@@ -102,13 +102,64 @@ nav {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background-color: var(--hero-bg-light);
-    transition: var(--transition);
     position: relative;
     overflow: hidden;
+    background-color: var(--hero-bg-light);
+    transition: var(--transition);
+}
+
+.code-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.1;
+    z-index: 0;
+}
+
+.code-background::before,
+.code-background::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+
+.code-background::before {
+    background: 
+        linear-gradient(to right, #0000 0%, #0000 5%, #000 5%, #000 6%, #0000 6%, #0000 14%, #000 14%, #000 15%, #0000 15%, #0000 19%, #000 19%, #000 20%, #0000 20%, #0000 100%),
+        linear-gradient(to bottom, #0000 0%, #0000 5%, #000 5%, #000 6%, #0000 6%, #0000 14%, #000 14%, #000 15%, #0000 15%, #0000 19%, #000 19%, #000 20%, #0000 20%, #0000 100%);
+    background-size: 120px 120px;
+}
+
+.code-background::after {
+    background: 
+        linear-gradient(to right, #0000 0%, #0000 25%, #000 25%, #000 26%, #0000 26%, #0000 34%, #000 34%, #000 35%, #0000 35%, #0000 39%, #000 39%, #000 40%, #0000 40%, #0000 100%),
+        linear-gradient(to bottom, #0000 0%, #0000 25%, #000 25%, #000 26%, #0000 26%, #0000 34%, #000 34%, #000 35%, #0000 35%, #0000 39%, #000 39%, #000 40%, #0000 40%, #0000 100%);
+    background-size: 80px 80px;
+    transform: rotate(45deg);
+}
+
+@keyframes slideBackground {
+    from {
+        transform: translateX(0) translateY(0);
+    }
+    to {
+        transform: translateX(-120px) translateY(-120px);
+    }
+}
+
+.code-background::before,
+.code-background::after {
+    animation: slideBackground 60s linear infinite;
 }
 
 .hero-content {
+    position: relative;
     z-index: 1;
 }
 
@@ -122,37 +173,6 @@ nav {
     font-size: 2rem;
     margin-bottom: 2rem;
     color: var(--text-color);
-}
-
-.hero-shape {
-    position: absolute;
-    background-color: var(--primary-color);
-    opacity: 0.1;
-    transition: var(--transition);
-}
-
-.hero-shape-1 {
-    width: 300px;
-    height: 300px;
-    border-radius: 50%;
-    top: -150px;
-    left: -150px;
-}
-
-.hero-shape-2 {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    bottom: -100px;
-    right: -100px;
-}
-
-.hero-shape-3 {
-    width: 150px;
-    height: 150px;
-    transform: rotate(45deg);
-    top: 50%;
-    left: 10%;
 }
 
 .typed-text {
@@ -351,6 +371,57 @@ footer {
     background-size: cover;
 }
 
+/* Dark mode styles */
+body.dark-mode {
+    --background-color: #1a1a1a;
+    --text-color: #f4f4f4;
+    --hero-bg-light: var(--hero-bg-dark);
+}
+
+body.dark-mode header {
+    background-color: rgba(26, 26, 26, 0.95);
+}
+
+body.dark-mode .skill-item, 
+body.dark-mode .project-item {
+    background-color: #2c2c2c;
+    color: #f4f4f4;
+}
+
+body.dark-mode #contact {
+    background-color: #2c2c2c;
+}
+
+body.dark-mode .code-background {
+    opacity: 0.05;
+}
+
+body.dark-mode .hamburger .line {
+    background-color: #f4f4f4;
+}
+
+/* Accessibility improvements */
+.btn:focus,
+.nav-links a:focus,
+.dark-mode-toggle:focus,
+#back-to-top:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+/* Animation on scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.fade-in.appear {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
     .nav-links {
         position: fixed;
@@ -413,57 +484,4 @@ footer {
     .tagline {
         font-size: 1.5rem;
     }
-}
-
-/* Dark mode styles */
-body.dark-mode {
-    --background-color: #1a1a1a;
-    --text-color: #f4f4f4;
-}
-
-body.dark-mode header {
-    background-color: rgba(26, 26, 26, 0.95);
-}
-
-body.dark-mode .skill-item, 
-body.dark-mode .project-item {
-    background-color: #2c2c2c;
-    color: #f4f4f4;
-}
-
-body.dark-mode #contact {
-    background-color: #2c2c2c;
-}
-
-body.dark-mode #hero {
-    background-color: var(--hero-bg-dark);
-}
-
-body.dark-mode .hero-shape {
-    opacity: 0.2;
-}
-
-body.dark-mode .hamburger .line {
-    background-color: #f4f4f4;
-}
-
-/* Accessibility improvements */
-.btn:focus,
-.nav-links a:focus,
-.dark-mode-toggle:focus,
-#back-to-top:focus {
-    outline: 2px solid var(--accent-color);
-    outline-offset: 2px;
-}
-
-/* Animation on scroll */
-.fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
-}
-
-.fade-in.appear {
-    opacity: 1;
-    transform: translateY(0);
 }
