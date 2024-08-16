@@ -5,55 +5,71 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WrightByte - Matt Wright's Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <div class="container">
             <nav>
+                <div class="logo">WrightByte</div>
                 <ul>
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
+                <div class="dark-mode-toggle">
+                    <i class="fas fa-moon"></i>
+                </div>
             </nav>
         </div>
     </header>
 
     <main>
+        <section id="hero">
+            <div class="container">
+                <h1>Matt Wright</h1>
+                <p class="tagline">Crafting Digital Experiences</p>
+                <a href="#contact" class="btn">Get in Touch</a>
+            </div>
+        </section>
+
         <section id="about">
             <div class="container">
-                <h1>WrightByte</h1>
-                <p>Hi, I'm Matt Wright. I'm a passionate developer exploring various areas of programming including web, mobile, games, and software development.</p>
-                <a href="#contact" class="btn">Get in Touch</a>
+                <h2>About Me</h2>
+                <p>I'm a passionate developer exploring various areas of programming including web, mobile, games, and software development. My goal is to create beautiful, functional, and user-friendly digital experiences.</p>
             </div>
         </section>
 
         <section id="skills">
             <div class="container">
                 <h2>Skills</h2>
-                <ul>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>JavaScript</li>
+                <div class="skills-grid">
+                    <div class="skill-item"><i class="fab fa-html5"></i> HTML5</div>
+                    <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+                    <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
                     <!-- Add more skills as you learn them -->
-                </ul>
+                </div>
             </div>
         </section>
 
         <section id="projects">
             <div class="container">
                 <h2>My Projects</h2>
-                <div class="project">
-                    <h3>Project 1</h3>
-                    <p>Description of your first project goes here.</p>
+                <div class="projects-grid">
+                    <div class="project-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Project 1">
+                        <h3>Project 1</h3>
+                        <p>Description of your first project goes here.</p>
+                    </div>
+                    <div class="project-item">
+                        <img src="https://via.placeholder.com/300x200" alt="Project 2">
+                        <h3>Project 2</h3>
+                        <p>Description of your second project goes here.</p>
+                    </div>
+                    <!-- Add more projects as you complete them -->
                 </div>
-                <div class="project">
-                    <h3>Project 2</h3>
-                    <p>Description of your second project goes here.</p>
-                </div>
-                <!-- Add more projects as you complete them -->
             </div>
         </section>
 
@@ -71,5 +87,7 @@
             <p>&copy; 2023 WrightByte. All rights reserved.</p>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
