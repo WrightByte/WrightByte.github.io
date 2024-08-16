@@ -21,7 +21,20 @@ body {
     line-height: 1.6;
     color: var(--text-color);
     background: linear-gradient(135deg, var(--background-light-1), var(--background-light-2));
-    transition: background 0.5s ease, color 0.3s ease;
+    transition: background 10s ease;
+    animation: gradientShift 20s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
@@ -108,12 +121,7 @@ nav {
 }
 
 .hero-content {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     padding: 2rem;
-    border-radius: 20px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 #hero h1 {
@@ -322,15 +330,23 @@ footer {
 body.dark-mode {
     --text-color: #f4f4f4;
     background: linear-gradient(135deg, var(--background-dark-1), var(--background-dark-2));
+    animation: gradientShiftDark 20s ease infinite;
+}
+
+@keyframes gradientShiftDark {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 body.dark-mode header {
     background-color: rgba(26, 26, 26, 0.95);
-}
-
-body.dark-mode .hero-content {
-    background: rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .skill-item, 

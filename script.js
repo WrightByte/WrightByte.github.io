@@ -92,6 +92,18 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Dynamic gradient background
+    function updateGradient() {
+        const hue = (Date.now() / 100) % 360;
+        document.body.style.background = `linear-gradient(135deg, 
+            hsl(${hue}, 100%, 90%), 
+            hsl(${(hue + 60) % 360}, 100%, 90%)
+        )`;
+    }
+
+    // Call updateGradient every 100ms
+    setInterval(updateGradient, 100);
+
     // Prevent flash of unstyled content
     document.body.classList.add('js-loading');
     window.addEventListener("load", showPage);
