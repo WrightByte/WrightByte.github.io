@@ -1,116 +1,68 @@
-document.addEventListener('DOMContentLoaded', (event) => {
-    const darkModeToggle = document.querySelector('.dark-mode-toggle');
-    const darkModeIcon = darkModeToggle.querySelector('i');
-    const hamburger = document.querySelector('.hamburger');
-    const navLinks = document.querySelector('.nav-links');
-    const backToTop = document.querySelector('#back-to-top');
-    
+document.addEventListener('DOMContentLoaded', () => {
+    // Typed effect
+    const typed = new Typed('.typed-text', {
+        strings: ['Web Developer', 'Problem Solver', 'Tech Enthusiast'],
+        typeSpeed: 50,
+        backSpeed: 30,
+        backDelay: 2000,
+        loop: true
+    });
+
     // Dark mode toggle
+    const darkModeToggle = document.querySelector('.dark-mode-toggle');
+    const body = document.body;
+
     darkModeToggle.addEventListener('click', () => {
-        document.body.classList.toggle('dark-mode');
-        if (document.body.classList.contains('dark-mode')) {
-            darkModeIcon.classList.remove('fa-moon');
-            darkModeIcon.classList.add('fa-sun');
+        body.classList.toggle('dark-mode');
+        if (body.classList.contains('dark-mode')) {
+            darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
         } else {
-            darkModeIcon.classList.remove('fa-sun');
-            darkModeIcon.classList.add('fa-moon');
+            darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
         }
     });
 
-    // Hamburger menu
+    // Mobile menu toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const links = document.querySelectorAll('.nav-links li');
+
     hamburger.addEventListener('click', () => {
         navLinks.classList.toggle('open');
+        links.forEach(link => {
+            link.classList.toggle('fade');
+        });
         hamburger.classList.toggle('toggle');
-        document.body.classList.toggle('nav-open');
     });
 
-    // Smooth scrolling for navigation links
+    // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            navLinks.classList.remove('open');
-            hamburger.classList.remove('toggle');
-            document.body.classList.remove('nav-open');
-
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
             });
         });
     });
 
-    // Typing animation
-    const typedTextSpan = document.querySelector(".typed-text");
-    const cursorSpan = document.querySelector(".cursor");
-
-    const textArray = ["Web Developer", "Front-End Developer", "Back-End Developer", "Full-Stack Developer"];
-    const typingDelay = 200;
-    const erasingDelay = 100;
-    const newTextDelay = 2000; // Delay between current and next text
-    let textArrayIndex = 0;
-    let charIndex = 0;
-
-    function type() {
-        if (charIndex < textArray[textArrayIndex].length) {
-            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-            typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
-            charIndex++;
-            setTimeout(type, typingDelay);
-        } 
-        else {
-            cursorSpan.classList.remove("typing");
-            setTimeout(erase, newTextDelay);
-        }
-    }
-
-    function erase() {
-        if (charIndex > 0) {
-            if(!cursorSpan.classList.contains("typing")) cursorSpan.classList.add("typing");
-            typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex-1);
-            charIndex--;
-            setTimeout(erase, erasingDelay);
-        } 
-        else {
-            cursorSpan.classList.remove("typing");
-            textArrayIndex++;
-            if(textArrayIndex>=textArray.length) textArrayIndex=0;
-            setTimeout(type, typingDelay + 1100);
-        }
-    }
-
-    if(textArray.length) setTimeout(type, newTextDelay + 250);
-
-    // Parallax effect for hero section
-    window.addEventListener('scroll', function() {
-        const parallax = document.querySelector('.parallax');
-        let scrollPosition = window.pageYOffset;
-        parallax.style.backgroundPositionY = scrollPosition * 0.7 + 'px';
-    });
-
-    // Add subtle animation to hero shapes
-    const heroShapes = document.querySelectorAll('.hero-shape');
-    heroShapes.forEach(shape => {
-        setInterval(() => {
-            shape.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px) rotate(${Math.random() * 10 - 5}deg)`;
-        }, 3000);
-    });
-
     // Back to top button
+    const backToTopButton = document.getElementById('back-to-top');
+
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 100) {
-            backToTop.classList.add('show');
+        if (window.pageYOffset > 300) {
+            backToTopButton.classList.add('show');
         } else {
-            backToTop.classList.remove('show');
+            backToTopButton.classList.remove('show');
         }
     });
 
-    backToTop.addEventListener('click', () => {
+    backToTopButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // Animation on scroll
+    // Intersection Observer for fade-in effect
     const faders = document.querySelectorAll('.fade-in');
     const appearOptions = {
-        threshold: 0.5,
+        threshold: 0.3,
         rootMargin: "0px 0px -100px 0px"
     };
 
@@ -129,12 +81,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
         appearOnScroll.observe(fader);
     });
 
-    // Form submission (you'll need to implement server-side handling)
-    const form = document.querySelector('#contact-form');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Here you would typically send the form data to your server
-        alert('Form submitted! (Note: This is a demo, no data was actually sent)');
-        form.reset();
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const parallax = document.querySelector('.parallax');
+        parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
     });
 });
