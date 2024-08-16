@@ -81,10 +81,22 @@ document.addEventListener('DOMContentLoaded', () => {
         appearOnScroll.observe(fader);
     });
 
-    // Parallax effect for hero section
-    window.addEventListener('scroll', () => {
-        const scrolled = window.pageYOffset;
-        const parallax = document.querySelector('.parallax');
-        parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+    // Close mobile menu when a link is clicked
+    links.forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            hamburger.classList.remove('toggle');
+            links.forEach(link => {
+                link.classList.remove('fade');
+            });
+        });
     });
+
+    // Prevent flash of unstyled content
+    document.body.classList.add('js-loading');
+    window.addEventListener("load", showPage);
+
+    function showPage() {
+        document.body.classList.remove('js-loading');
+    }
 });
