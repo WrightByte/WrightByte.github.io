@@ -1,7 +1,11 @@
 document.addEventListener('DOMContentLoaded', (event) => {
     const darkModeToggle = document.querySelector('.dark-mode-toggle');
     const darkModeIcon = darkModeToggle.querySelector('i');
+    const hamburger = document.querySelector('.hamburger');
+    const navLinks = document.querySelector('.nav-links');
+    const backToTop = document.querySelector('#back-to-top');
     
+    // Dark mode toggle
     darkModeToggle.addEventListener('click', () => {
         document.body.classList.toggle('dark-mode');
         if (document.body.classList.contains('dark-mode')) {
@@ -13,10 +17,20 @@ document.addEventListener('DOMContentLoaded', (event) => {
         }
     });
 
+    // Hamburger menu
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('open');
+        hamburger.classList.toggle('toggle');
+        document.body.classList.toggle('nav-open');
+    });
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
+            navLinks.classList.remove('open');
+            hamburger.classList.remove('toggle');
+            document.body.classList.remove('nav-open');
 
             document.querySelector(this.getAttribute('href')).scrollIntoView({
                 behavior: 'smooth'
@@ -65,25 +79,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     if(textArray.length) setTimeout(type, newTextDelay + 250);
 
-    // Animate skill bars on scroll
-    function animateSkills() {
-        const skillsSection = document.querySelector('#skills');
-        const progressBars = document.querySelectorAll('.progress');
-        
-        const sectionPosition = skillsSection.getBoundingClientRect().top;
-        const screenPosition = window.innerHeight / 1.3;
-        
-        if(sectionPosition < screenPosition) {
-            progressBars.forEach(progress => {
-                const value = progress.dataset.progress;
-                progress.style.opacity = 1;
-                progress.style.width = `${value}%`;
-            });
-        }
-    }
-
-    window.addEventListener('scroll', animateSkills);
-
     // Parallax effect for hero section
     window.addEventListener('scroll', function() {
         const parallax = document.querySelector('.parallax');
@@ -97,5 +92,49 @@ document.addEventListener('DOMContentLoaded', (event) => {
         setInterval(() => {
             shape.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px) rotate(${Math.random() * 10 - 5}deg)`;
         }, 3000);
+    });
+
+    // Back to top button
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 100) {
+            backToTop.classList.add('show');
+        } else {
+            backToTop.classList.remove('show');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Animation on scroll
+    const faders = document.querySelectorAll('.fade-in');
+    const appearOptions = {
+        threshold: 0.5,
+        rootMargin: "0px 0px -100px 0px"
+    };
+
+    const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) {
+                return;
+            } else {
+                entry.target.classList.add('appear');
+                appearOnScroll.unobserve(entry.target);
+            }
+        });
+    }, appearOptions);
+
+    faders.forEach(fader => {
+        appearOnScroll.observe(fader);
+    });
+
+    // Form submission (you'll need to implement server-side handling)
+    const form = document.querySelector('#contact-form');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        // Here you would typically send the form data to your server
+        alert('Form submitted! (Note: This is a demo, no data was actually sent)');
+        form.reset();
     });
 });

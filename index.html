@@ -13,7 +13,7 @@
         <div class="container">
             <nav>
                 <div class="logo">WrightByte</div>
-                <ul>
+                <ul class="nav-links">
                     <li><a href="#about">About</a></li>
                     <li><a href="#skills">Skills</a></li>
                     <li><a href="#projects">Projects</a></li>
@@ -21,6 +21,11 @@
                 </ul>
                 <div class="dark-mode-toggle">
                     <i class="fas fa-moon"></i>
+                </div>
+                <div class="hamburger">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
                 </div>
             </nav>
         </div>
@@ -51,42 +56,12 @@
             <div class="container">
                 <h2>Skills</h2>
                 <div class="skills-grid">
-                    <div class="skill-item">
-                        <h3>HTML5</h3>
-                        <div class="progress-bar">
-                            <div class="progress" data-progress="90" style="width: 0;">90%</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h3>CSS3</h3>
-                        <div class="progress-bar">
-                            <div class="progress" data-progress="85" style="width: 0;">85%</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h3>JavaScript</h3>
-                        <div class="progress-bar">
-                            <div class="progress" data-progress="80" style="width: 0;">80%</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h3>React</h3>
-                        <div class="progress-bar">
-                            <div class="progress" data-progress="75" style="width: 0;">75%</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h3>Node.js</h3>
-                        <div class="progress-bar">
-                            <div class="progress" data-progress="70" style="width: 0;">70%</div>
-                        </div>
-                    </div>
-                    <div class="skill-item">
-                        <h3>SQL</h3>
-                        <div class="progress-bar">
-                            <div class="progress" data-progress="65" style="width: 0;">65%</div>
-                        </div>
-                    </div>
+                    <div class="skill-item"><i class="fab fa-html5"></i> HTML5</div>
+                    <div class="skill-item"><i class="fab fa-css3-alt"></i> CSS3</div>
+                    <div class="skill-item"><i class="fab fa-js"></i> JavaScript</div>
+                    <div class="skill-item"><i class="fab fa-react"></i> React</div>
+                    <div class="skill-item"><i class="fab fa-node"></i> Node.js</div>
+                    <div class="skill-item"><i class="fas fa-database"></i> SQL</div>
                 </div>
             </div>
         </section>
@@ -96,21 +71,21 @@
                 <h2>My Projects</h2>
                 <div class="projects-grid">
                     <div class="project-item">
-                        <img src="https://via.placeholder.com/300x200" alt="Responsive Website">
+                        <img src="https://via.placeholder.com/300x200" alt="Responsive Website" loading="lazy">
                         <div class="project-info">
                             <h3>Responsive Business Website</h3>
                             <p>A fully responsive website for a local business, built with HTML5, CSS3, and JavaScript.</p>
                         </div>
                     </div>
                     <div class="project-item">
-                        <img src="https://via.placeholder.com/300x200" alt="React App">
+                        <img src="https://via.placeholder.com/300x200" alt="React App" loading="lazy">
                         <div class="project-info">
                             <h3>React Weather App</h3>
                             <p>A weather application built with React, fetching data from a weather API.</p>
                         </div>
                     </div>
                     <div class="project-item">
-                        <img src="https://via.placeholder.com/300x200" alt="Full-Stack App">
+                        <img src="https://via.placeholder.com/300x200" alt="Full-Stack App" loading="lazy">
                         <div class="project-info">
                             <h3>Full-Stack Blog Platform</h3>
                             <p>A blog platform with user authentication, built using Node.js, Express, and MongoDB.</p>
@@ -123,11 +98,16 @@
         <section id="contact">
             <div class="container">
                 <h2>Contact Me</h2>
-                <p>I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-                <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> your.email@example.com</p>
-                    <p><i class="fab fa-github"></i> <a href="https://github.com/yourusername">github.com/yourusername</a></p>
-                    <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/yourusername">linkedin.com/in/yourusername</a></p>
+                <form id="contact-form">
+                    <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
+                    <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
+                    <textarea name="message" placeholder="Your Message" required aria-label="Your Message"></textarea>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+                <div class="social-links">
+                    <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
         </section>
@@ -138,6 +118,8 @@
             <p>&copy; 2024 WrightByte. All rights reserved.</p>
         </div>
     </footer>
+
+    <button id="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
 
     <script src="script.js"></script>
 </body>
