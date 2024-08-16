@@ -265,46 +265,50 @@ h2 {
 #contact {
     background-color: var(--secondary-color);
     color: #fff;
+    text-align: center;
 }
 
 #contact h2 {
     color: #fff;
 }
 
-#contact-form {
-    display: grid;
-    gap: 20px;
-    max-width: 600px;
-    margin: 0 auto;
+#contact p {
+    margin-bottom: 20px;
 }
 
-#contact-form input,
-#contact-form textarea {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
+.contact-info {
+    margin-bottom: 30px;
 }
 
-#contact-form textarea {
-    height: 150px;
+.contact-info a {
+    color: #fff;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.contact-info a:hover {
+    color: var(--accent-color);
+}
+
+.contact-info i {
+    margin-right: 10px;
 }
 
 .social-links {
     display: flex;
     justify-content: center;
-    margin-top: 30px;
+    gap: 20px;
 }
 
 .social-links a {
     color: #fff;
     font-size: 1.5rem;
-    margin: 0 10px;
     transition: var(--transition);
 }
 
 .social-links a:hover {
     color: var(--accent-color);
+    transform: translateY(-3px);
 }
 
 footer {
