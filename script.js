@@ -64,4 +64,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     if(textArray.length) setTimeout(type, newTextDelay + 250);
+
+    // Add star twinkling effect
+    function twinkleStars() {
+        const stars = document.querySelector('.stars');
+        setInterval(() => {
+            stars.style.backgroundPosition = `${Math.random() * 100}px ${Math.random() * 100}px`;
+        }, 1000);
+    }
+
+    twinkleStars();
 });
