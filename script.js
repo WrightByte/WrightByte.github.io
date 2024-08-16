@@ -65,6 +65,32 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     if(textArray.length) setTimeout(type, newTextDelay + 250);
 
+    // Animate skill bars on scroll
+    function animateSkills() {
+        const skillsSection = document.querySelector('#skills');
+        const progressBars = document.querySelectorAll('.progress');
+        
+        const sectionPosition = skillsSection.getBoundingClientRect().top;
+        const screenPosition = window.innerHeight / 1.3;
+        
+        if(sectionPosition < screenPosition) {
+            progressBars.forEach(progress => {
+                const value = progress.dataset.progress;
+                progress.style.opacity = 1;
+                progress.style.width = `${value}%`;
+            });
+        }
+    }
+
+    window.addEventListener('scroll', animateSkills);
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', function() {
+        const parallax = document.querySelector('.parallax');
+        let scrollPosition = window.pageYOffset;
+        parallax.style.backgroundPositionY = scrollPosition * 0.7 + 'px';
+    });
+
     // Add subtle animation to hero shapes
     const heroShapes = document.querySelectorAll('.hero-shape');
     heroShapes.forEach(shape => {
