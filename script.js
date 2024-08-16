@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (document.body.classList.contains('dark-mode')) {
             darkModeIcon.classList.remove('fa-moon');
             darkModeIcon.classList.add('fa-sun');
-            nightSkyAnimation();
         } else {
             darkModeIcon.classList.remove('fa-sun');
             darkModeIcon.classList.add('fa-moon');
@@ -66,60 +65,11 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     if(textArray.length) setTimeout(type, newTextDelay + 250);
 
-    // Add star twinkling effect
-    function twinkleStars() {
-        const stars = document.querySelector('.stars');
+    // Add subtle animation to hero shapes
+    const heroShapes = document.querySelectorAll('.hero-shape');
+    heroShapes.forEach(shape => {
         setInterval(() => {
-            stars.style.backgroundPosition = `${Math.random() * 100}px ${Math.random() * 100}px`;
-        }, 1000);
-    }
-
-    twinkleStars();
-
-    function createComet() {
-        const comet = document.querySelector('.comet');
-        const startY = Math.random() * window.innerHeight;
-        comet.style.top = `${startY}px`;
-        comet.style.left = '-150px';
-        comet.style.opacity = '1';
-        comet.style.transform = 'rotate(-45deg)';
-        
-        let position = -150;
-        const moveComet = setInterval(() => {
-            position += 5;
-            comet.style.left = `${position}px`;
-            comet.style.top = `${startY + position * 0.5}px`;
-            
-            if (position > window.innerWidth + 150) {
-                clearInterval(moveComet);
-                comet.style.opacity = '0';
-            }
-        }, 20);
-    }
-
-    function animateGalaxies() {
-        const galaxies = document.querySelectorAll('.galaxy');
-        galaxies.forEach((galaxy, index) => {
-            galaxy.style.top = `${Math.random() * 100}%`;
-            galaxy.style.left = `${Math.random() * 100}%`;
-            galaxy.style.opacity = '0.5';
-            
-            setTimeout(() => {
-                galaxy.style.opacity = '0';
-            }, 10000 + index * 5000);
-        });
-    }
-
-    function nightSkyAnimation() {
-        if (document.body.classList.contains('dark-mode')) {
-            createComet();
-            animateGalaxies();
-            setTimeout(nightSkyAnimation, Math.random() * 10000 + 5000);
-        }
-    }
-
-    // Initial call to start the night sky animation if in dark mode
-    if (document.body.classList.contains('dark-mode')) {
-        nightSkyAnimation();
-    }
+            shape.style.transform = `translate(${Math.random() * 10 - 5}px, ${Math.random() * 10 - 5}px) rotate(${Math.random() * 10 - 5}deg)`;
+        }, 3000);
+    });
 });

@@ -4,6 +4,8 @@
     --accent-color: #fd79a8;
     --background-color: #ffffff;
     --text-color: #2d3436;
+    --hero-bg-light: #f0f4f8;
+    --hero-bg-dark: #1a202c;
     --transition: all 0.3s ease;
 }
 
@@ -87,168 +89,57 @@ nav ul li a:hover {
     align-items: center;
     justify-content: center;
     text-align: center;
-    color: #fff;
+    background-color: var(--hero-bg-light);
+    transition: var(--transition);
     position: relative;
     overflow: hidden;
-    transition: var(--transition);
-}
-
-.sky {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: var(--transition);
-}
-
-.sun-moon {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    top: 50px;
-    left: 50px;
-    transition: var(--transition);
-}
-
-.stars {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    opacity: 0;
-    transition: var(--transition);
-}
-
-.clouds {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    transition: var(--transition);
-}
-
-.cloud {
-    position: absolute;
-    background: #fff;
-    border-radius: 50px;
-    width: 200px;
-    height: 60px;
-    opacity: 0.8;
-}
-
-.cloud:before,
-.cloud:after {
-    content: '';
-    position: absolute;
-    background: #fff;
-    border-radius: 50%;
-}
-
-.cloud:before {
-    width: 100px;
-    height: 100px;
-    top: -50px;
-    left: 10px;
-}
-
-.cloud:after {
-    width: 120px;
-    height: 120px;
-    top: -70px;
-    right: 10px;
-}
-
-.cloud:nth-child(1) {
-    top: 20%;
-    left: -200px;
-    transform: scale(0.8);
-    animation: moveCloud 60s linear infinite;
-}
-
-.cloud:nth-child(2) {
-    top: 40%;
-    left: -200px;
-    transform: scale(1.2);
-    animation: moveCloud 45s linear infinite;
-    animation-delay: -20s;
-}
-
-.cloud:nth-child(3) {
-    top: 60%;
-    left: -200px;
-    transform: scale(0.6);
-    animation: moveCloud 30s linear infinite;
-    animation-delay: -5s;
-}
-
-@keyframes moveCloud {
-    0% {
-        left: -200px;
-    }
-    100% {
-        left: calc(100% + 200px);
-    }
-}
-
-.comet {
-    position: absolute;
-    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
-    width: 150px;
-    height: 2px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.galaxy {
-    position: absolute;
-    width: 300px;
-    height: 150px;
-    background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
-    opacity: 0;
-    transition: opacity 1s ease;
-}
-
-/* Day mode styles */
-#hero {
-    background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
-}
-
-.sun-moon {
-    background: #FFD700;
-    box-shadow: 0 0 20px #FFD700;
 }
 
 .hero-content {
-    position: relative;
     z-index: 1;
 }
 
 #hero h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
-    animation: fadeInUp 1s ease-out;
+    color: var(--text-color);
 }
 
 .tagline {
     font-size: 2rem;
     margin-bottom: 2rem;
-    animation: fadeInUp 1s ease-out 0.5s;
-    animation-fill-mode: both;
+    color: var(--text-color);
 }
 
-@keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.hero-shape {
+    position: absolute;
+    background-color: var(--primary-color);
+    opacity: 0.1;
+    transition: var(--transition);
+}
+
+.hero-shape-1 {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    top: -150px;
+    left: -150px;
+}
+
+.hero-shape-2 {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    bottom: -100px;
+    right: -100px;
+}
+
+.hero-shape-3 {
+    width: 150px;
+    height: 150px;
+    transform: rotate(45deg);
+    top: 50%;
+    left: 10%;
 }
 
 .typed-text {
@@ -259,79 +150,34 @@ nav ul li a:hover {
 .cursor {
     display: inline-block;
     width: 3px;
-    background-color: #fff;
+    background-color: var(--text-color);
     margin-left: 0.1rem;
     animation: blink 0.7s infinite;
 }
 
 @keyframes blink {
-    0% { background-color: #fff; }
-    49% { background-color: #fff; }
+    0% { background-color: var(--text-color); }
+    49% { background-color: var(--text-color); }
     50% { background-color: transparent; }
     99% { background-color: transparent; }
-    100% { background-color: #fff; }
+    100% { background-color: var(--text-color); }
 }
 
 .btn {
     display: inline-block;
-    background: #fff;
-    color: var(--primary-color);
+    background: var(--primary-color);
+    color: #fff;
     padding: 12px 24px;
     text-decoration: none;
     border-radius: 30px;
     font-weight: 600;
     transition: var(--transition);
-    animation: fadeInUp 1s ease-out 1s;
-    animation-fill-mode: both;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255, 255, 255, .3),
-        transparent
-    );
-    transition: all .5s;
-}
-
-.btn:hover:before {
-    left: 100%;
 }
 
 .btn:hover {
     background-color: var(--accent-color);
-    color: #fff;
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.mouse:before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    position: absolute;
-    top: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: #fff;
-    border-radius: 50%;
-    animation: scrollDown 2s infinite;
-}
-
-@keyframes scrollDown {
-    0% { opacity: 0; transform: translate(-50%, 0); }
-    40% { opacity: 1; }
-    80% { opacity: 0; transform: translate(-50%, 20px); }
-    100% { opacity: 0; }
 }
 
 section {
@@ -451,27 +297,9 @@ body.dark-mode #contact {
 }
 
 body.dark-mode #hero {
-    background: linear-gradient(to bottom, #0C0E10, #1F2833);
+    background-color: var(--hero-bg-dark);
 }
 
-body.dark-mode .sun-moon {
-    background: #C6C6C6;
-    box-shadow: 0 0 20px #C6C6C6;
-}
-
-body.dark-mode .stars {
-    opacity: 1;
-    background-image: 
-        radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 50px 160px, #fff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 130px 80px, #fff, rgba(0,0,0,0)),
-        radial-gradient(2px 2px at 160px 120px, #fff, rgba(0,0,0,0));
-    background-repeat: repeat;
-    background-size: 200px 200px;
-}
-
-body.dark-mode .clouds {
-    display: none;
+body.dark-mode .hero-shape {
+    opacity: 0.2;
 }
