@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (document.body.classList.contains('dark-mode')) {
             darkModeIcon.classList.remove('fa-moon');
             darkModeIcon.classList.add('fa-sun');
+            nightSkyAnimation();
         } else {
             darkModeIcon.classList.remove('fa-sun');
             darkModeIcon.classList.add('fa-moon');
@@ -74,4 +75,41 @@ document.addEventListener('DOMContentLoaded', (event) => {
     }
 
     twinkleStars();
+
+    function createComet() {
+        const comet = document.querySelector('.comet');
+        comet.style.top = `${Math.random() * 100}%`;
+        comet.style.left = `${Math.random() * 100}%`;
+        comet.style.opacity = '1';
+        
+        setTimeout(() => {
+            comet.style.opacity = '0';
+        }, 1000);
+    }
+
+    function animateGalaxies() {
+        const galaxies = document.querySelectorAll('.galaxy');
+        galaxies.forEach((galaxy, index) => {
+            galaxy.style.top = `${Math.random() * 100}%`;
+            galaxy.style.left = `${Math.random() * 100}%`;
+            galaxy.style.opacity = '0.5';
+            
+            setTimeout(() => {
+                galaxy.style.opacity = '0';
+            }, 10000 + index * 5000);
+        });
+    }
+
+    function nightSkyAnimation() {
+        if (document.body.classList.contains('dark-mode')) {
+            createComet();
+            animateGalaxies();
+        }
+        setTimeout(nightSkyAnimation, Math.random() * 10000 + 5000);
+    }
+
+    // Initial call to start the night sky animation if in dark mode
+    if (document.body.classList.contains('dark-mode')) {
+        nightSkyAnimation();
+    }
 });

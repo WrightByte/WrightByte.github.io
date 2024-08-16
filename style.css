@@ -194,6 +194,25 @@ nav ul li a:hover {
     }
 }
 
+.comet {
+    position: absolute;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
+    width: 100px;
+    height: 2px;
+    transform: rotate(-45deg);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.galaxy {
+    position: absolute;
+    width: 200px;
+    height: 100px;
+    background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
 /* Day mode styles */
 #hero {
     background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
@@ -469,11 +488,6 @@ body.dark-mode .stars {
     background-size: 200px 200px;
 }
 
-body.dark-mode .cloud {
-    background: rgba(255, 255, 255, 0.1);
-}
-
-body.dark-mode .cloud:before,
-body.dark-mode .cloud:after {
-    background: rgba(255, 255, 255, 0.1);
+body.dark-mode .clouds {
+    display: none;
 }
