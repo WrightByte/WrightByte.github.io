@@ -197,20 +197,19 @@ nav ul li a:hover {
 .comet {
     position: absolute;
     background: linear-gradient(to right, rgba(255, 255, 255, 0.8), transparent);
-    width: 100px;
+    width: 150px;
     height: 2px;
-    transform: rotate(-45deg);
     opacity: 0;
     transition: opacity 0.3s ease;
 }
 
 .galaxy {
     position: absolute;
-    width: 200px;
-    height: 100px;
+    width: 300px;
+    height: 150px;
     background: radial-gradient(ellipse at center, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 1s ease;
 }
 
 /* Day mode styles */
@@ -313,21 +312,6 @@ nav ul li a:hover {
     color: #fff;
     transform: translateY(-3px);
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.scroll-indicator {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.mouse {
-    width: 30px;
-    height: 50px;
-    border: 2px solid #fff;
-    border-radius: 20px;
-    position: relative;
 }
 
 .mouse:before {

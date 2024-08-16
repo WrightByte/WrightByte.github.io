@@ -78,13 +78,23 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
     function createComet() {
         const comet = document.querySelector('.comet');
-        comet.style.top = `${Math.random() * 100}%`;
-        comet.style.left = `${Math.random() * 100}%`;
+        const startY = Math.random() * window.innerHeight;
+        comet.style.top = `${startY}px`;
+        comet.style.left = '-150px';
         comet.style.opacity = '1';
+        comet.style.transform = 'rotate(-45deg)';
         
-        setTimeout(() => {
-            comet.style.opacity = '0';
-        }, 1000);
+        let position = -150;
+        const moveComet = setInterval(() => {
+            position += 5;
+            comet.style.left = `${position}px`;
+            comet.style.top = `${startY + position * 0.5}px`;
+            
+            if (position > window.innerWidth + 150) {
+                clearInterval(moveComet);
+                comet.style.opacity = '0';
+            }
+        }, 20);
     }
 
     function animateGalaxies() {
@@ -104,8 +114,8 @@ document.addEventListener('DOMContentLoaded', (event) => {
         if (document.body.classList.contains('dark-mode')) {
             createComet();
             animateGalaxies();
+            setTimeout(nightSkyAnimation, Math.random() * 10000 + 5000);
         }
-        setTimeout(nightSkyAnimation, Math.random() * 10000 + 5000);
     }
 
     // Initial call to start the night sky animation if in dark mode
